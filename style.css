@@ -1,0 +1,452 @@
+/* GENERAL */   
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* layout variables */
+:root{
+    --nav-btn-h: 32px;
+    --navbar-h: 44px;
+    --intro-h: 240px;
+}
+
+/* ensure body has space for fixed navbar */
+body{
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #fff;
+    color: var(--bg, #0f1724);
+    line-height: 1.4;
+    padding-top: var(--navbar-h); /* removed extra gap so intro sits directly under navbar */
+}
+
+/* top navbar: smaller and white (remove bottom line) */
+.navbar-custom{
+    height: var(--navbar-h);
+    background: #ffffff;
+    border-bottom: none;           /* removed dividing line */
+    box-shadow: 0 2px 8px rgba(15,23,36,0.04);
+}
+
+/* vertical centering for inner items */
+.navbar-custom .container-fluid {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* keep consistent smaller button sizing */
+.navbar-custom .btn,
+.hero .actions .btn {
+    height: var(--nav-btn-h);
+    padding: 0 0.6rem;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    background-color: #0d6efd;    /* blue same as CV button */
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+/* language toggle (EN/FR) - use success green */
+#lang-btn {
+    background: #198754;
+    border-color: #198754;
+    color: #fff;
+}
+
+/* make the LinkedIn button square by matching its width to the button height */
+#linkedin-link {
+    width: var(--nav-btn-h);
+    padding: 0;
+}
+
+/* scale the icon to fit the smaller button */
+#linkedin-link img {
+    width: calc(var(--nav-btn-h) * 0.55);
+    height: calc(var(--nav-btn-h) * 0.55);
+    display: block;
+}
+
+/* --- Intro section (bigger band and larger avatar) --- */
+/* intro-section: same look as navbar but taller so avatar sits at bottom center */
+.intro-section{
+    background: linear-gradient(180deg, #f0fbf1 0%, #e6f7df 100%);
+    border-bottom: none;
+    height: var(--intro-h);
+    position: relative;
+    display: block;
+    margin-top: 0;
+    color: var(--bg, #0f1724);
+}
+
+/* container inside intro uses full height to push content to the bottom */
+.intro-section .container {
+    height: 100%;
+    padding: 0;
+}
+
+/* Place the avatar+name at the bottom center of the intro band */
+.intro-center{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+/* circular avatar: made smaller */
+.intro-avatar{
+    width: 140px;            /* smaller avatar */
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid #ffffff;
+    box-shadow: 0 10px 30px rgba(15,23,36,0.14);
+    background-color: #fff;
+    display: block;
+}
+
+/* make the name significantly larger for emphasis */
+.intro-name{
+    font-weight: 800;
+    color: var(--bg, #0f1724);
+    font-size: 2.4rem;
+    line-height: 1;
+    margin-top: 6px;
+}
+
+/* new subtitle style: smaller, muted, and centered */
+.intro-subtitle{
+    font-size: 1rem;
+    color: rgba(15,23,36,0.72);
+    font-weight: 500;
+    margin-top: 2px;
+    line-height: 1.2;
+}
+
+/* responsive: keep subtitle readable on small screens */
+@media (max-width: 520px) {
+    .intro-subtitle{ font-size: 0.9rem; }
+}
+
+/* ensure following page content isn't hidden behind avatar */
+main{
+    margin-top: 18px;
+}
+
+/* HERO: ensure relative positioning so actions can be centered absolutely */
+.hero{
+    position: relative;          /* ensure .actions can be absolutely centered */
+}
+
+/* actions container pinned to bottom center of the hero/viewport */
+.hero .actions{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* center horizontally */
+    bottom: 24px;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0;                   /* remove container margins that could offset centering */
+}
+
+/* Projects grid / cards */
+.projects-section { background: #fff; }
+
+.project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(15,23,36,0.06);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* image area */
+.project-card .card-img-container {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.project-card .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 200ms ease;
+}
+
+/* carousel arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.85);
+    border: none;
+    color: #0f1724;
+    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 200ms ease, opacity 200ms ease;
+    opacity: 0;
+}
+
+.card-img-container:hover .carousel-arrow {
+    opacity: 1;
+}
+
+.carousel-arrow:hover {
+    background: rgba(255, 255, 255, 0.95);
+    color: #198754;
+}
+
+.carousel-prev {
+    left: 8px;
+}
+
+.carousel-next {
+    right: 8px;
+}
+
+/* image counter badge */
+.carousel-counter {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(25, 135, 84, 0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* card body */
+.project-card .card-body {
+    padding: 0.9rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* title under the image */
+.project-card .card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: var(--bg, #0f1724);
+}
+
+/* small green origin text */
+.project-card .card-origin {
+    font-size: 0.85rem;
+    color: #198754; /* bootstrap success green */
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* description normal text */
+.project-card .card-desc {
+    font-size: 0.92rem;
+    color: rgba(15,23,36,0.82);
+    margin-bottom: 12px;
+    flex: 1 1 auto;
+}
+
+/* date badge top-right */
+.project-card .date-badge {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #198754;
+    color: white;
+    padding: 6px 8px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 5;
+}
+
+/* bottom-left more button */
+.project-card .more-btn {
+    align-self: flex-start;
+    margin: 0.5rem 0 0 0.9rem;
+    margin-bottom: 0.9rem;
+    text-decoration: none;
+
+    background: #198754;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* responsive adjustments */
+@media (min-width: 992px) {
+    /* default 3 columns provided by bootstrap col-md-4 */
+}
+
+@media (max-width: 768px) {
+    .project-card .card-img-container { height: 140px; }
+}
+
+@media (max-width: 420px) {
+    .project-card .card-img-container { height: 120px; }
+    .date-badge { font-size: 0.75rem; padding: 5px 7px; right: 8px; top: 8px; }
+}
+
+/* bottom bar hidden by default, slide up when shown */
+.bottom-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f1f3f5;          /* light grey */
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: 8px 0;
+    box-shadow: 0 -6px 18px rgba(15,23,36,0.04);
+    z-index: 120;
+    transform: translateY(110%);
+    transition: transform 240ms ease;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* visible state */
+.bottom-bar.show {
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* center the inner buttons and keep consistent sizing */
+.bottom-bar .btn {
+    height: var(--nav-btn-h, 32px);
+    padding: 0 0.6rem;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* square linkedin icon button */
+.linkedin-square {
+    width: var(--nav-btn-h, 32px);
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* linkedin png sizing */
+.linkedin-square img {
+    width: calc(var(--nav-btn-h, 32px) * 0.55);
+    height: calc(var(--nav-btn-h, 32px) * 0.55);
+    display: block;
+}
+
+/* ensure it won't overlay content while hidden on small screens */
+@media (max-width: 520px) {
+    .bottom-bar .btn { height: 30px; font-size: 0.82rem; }
+    .linkedin-square { width: 30px; }
+    .linkedin-square img { width: 16px; height: 16px; }
+}
+
+/* optional: if you kept .hero .actions earlier and want to hide it now */
+.hero .actions { display: none !important; }
+
+/* obsidian bottom bar: part of the document flow; hidden by default and revealed when scrolled into view */
+.obsidian-bottom-bar{
+    position: relative;                /* part of page (not fixed) */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #0b0f12;               /* obsidian color */
+    color: #ffffff;
+    padding: 10px 0;
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.45);
+    z-index: 130;
+    transform: translateY(18px) scale(0.995);
+    opacity: 0;
+    transition: transform 320ms ease, opacity 320ms ease;
+}
+
+/* visible state when element enters the viewport */
+.obsidian-bottom-bar.visible{
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* container for the two buttons, centered */
+.obsidian-bottom-bar .container { display: flex; justify-content: center; align-items: center; }
+
+/* LinkedIn square button */
+.linkedin-btn{
+    width: var(--nav-btn-h, 32px);
+    height: var(--nav-btn-h, 32px);
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+/* linkedin image sizing */
+.linkedin-btn img{ display:block; width: calc(var(--nav-btn-h,32px) * 0.55); height: calc(var(--nav-btn-h,32px) * 0.55); }
+
+/* CV button styling (white background for contrast) */
+.cv-btn{
+    background: #ffffff;
+    color: #0b0f12;
+    border-radius: 8px;
+    padding: 0 10px;
+    height: var(--nav-btn-h, 32px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* hover states */
+.linkedin-btn:hover,
+.cv-btn:hover{
+    opacity: 0.95;
+}
+
+/* responsive: reduce sizes on small screens */
+@media (max-width:520px){
+    .linkedin-btn, .cv-btn { height: 28px; }
+    .linkedin-btn { width: 28px; }
+    .linkedin-btn img { width: 14px; height: 14px; }
+    .cv-btn { padding: 0 8px; font-size: 0.9rem; }
+}
