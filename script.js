@@ -36,10 +36,29 @@ window.projectsData = [
         title_fr: 'Pont en H pour rechargement de batterie',
         origin_en: 'School project',
         origin_fr: 'Project scolaire',
-        desc_en: 'Short description of project three.',
-        desc_fr: 'Courte description du projet trois.',
-        full_desc_en: 'Short description of project three.',
-        full_desc_fr: 'Courte description du projet trois.',
+        desc_en: 'H-bridge and SEPIC converter enabling the conversion of mechanical energy from a cyclist into electrical energy. ',
+        desc_fr: `Pont en H et SEPIC permettant de convertir de l'énergie mécanique d'un cyclise en énergie électrique.`,
+        full_desc_en: `For our third semester, the project we were assigned was to design a PCB for an H-Bridge and another to step down voltage in order to power a load.
+The bonus challenge was to recharge a battery, and my team and I decided to take on this challenge. During this project, I was involved in :        
+
+                  • Designing the schematic and PCB of an H-bridge using Altium Designer
+                  • Assembling the circuit and performing simulations using MATLAB and Simulink
+                  • Programming a PID controller on a microcontroller to control the SEPIC PWM and ensure battery charging in constant current (CC)
+                    and constant voltage (CV) modes
+                  • Designing measurement and safety circuits
+                  
+Charging the battery was not a simple task. However, by achieving our objective, my team and I stood out as the first team in five years to successfully recharge the battery.`,
+
+        full_desc_fr: `Pour notre troisième session, le projet que nous avions à faire était conçevoir un PCB pour conduire un moteur et un autre pour abaisser la tension afin d'alimenter une charge.
+Le défi bonus était de recharger une batterie et mon équipe et moi avions décider de remonter le défi. Lors de ce projet, j'ai été emmener à :
+
+                  • Conçevoir un schéma et un PCB d'un pont en H à l'aide d'Altium Designer
+                  • Faire le montage du circuit et la simulation à l'aide du logiciel Matlab et Simulink
+                  • Programmation d'un PID sur microcontrôlleur afin de contrôler le PWM du SEPIC et assurer une recharge de la batterie en courant 
+                    constant (CC) et en tension constante (CV)
+                  • Conçevoir des circuits de mesure et de sécurité 
+
+Recharger la batterie n'avait pas été une tâche simple à faire. Toutefois, en arrivant à notre objectif, mon équipe et moi nous somme démarqué en ayant été la première équipe en 5 ans à arriver à recharger la batterie.`,
         dates: '2025 — 2025',
         images: ['assets/H-Bridge.png', 'assets/H-BridgeIRL.jpg'],
         link: 'project.html?id=2'
@@ -50,10 +69,26 @@ window.projectsData = [
         title_fr: 'Manette de jeux vidéo',
         origin_en: 'School project',
         origin_fr: 'Project scolaire',
-        desc_en: 'Short description of project four.',
-        desc_fr: 'Courte description du projet quatre.',
-        full_desc_en: 'Short description of project four.',
-        full_desc_fr: 'Courte description du projet quatre.',
+        desc_en: 'Video game controller and TankUS game.',
+        desc_fr: 'Manette de jeu vidéo et jeux vidéo TankUS.',
+        full_desc_en: `During the second semester, a team composed of electrical engineering and computer engineering students was tasked with developing a video game controller and a video game, respectively.
+For this project, I designed the PCB of the controller and assisted with the game programming. The skills I developed include:
+
+                  • Designing a schematic and a controller PCB using Altium Designer
+                  • Enabling communication between the controller and the computer using the JSON format
+                  • Soldering various electronic components onto the PCB
+
+In this project, multidisciplinary collaboration was the greatest challenge. By successfully combining these two engineering disciplines, we were able to design a complete and enjoyable product.`,
+
+        full_desc_fr: `Lors de la deuxième session, une équipe formée d'étant en génie électrique et génie informatique avait pour but de faire respectivement une manette de jeux vidéo et un jeu vidéo
+Pour ce projet, j'ai conçu le PCB d'une manette et j'ai aidé dans la programmation du jeu. Les compétence que j'ai développé sont :
+
+                  • Conçevoir un schéma et un PCB d'une manette à l'aide d'Altium Designer
+                  • À l'aide du format JSON, permettre la communication entre la manette et l'ordinateur 
+                  • Faire les soudures de différents componsants électriques sur le PCB
+
+Lors de ce projet, le travail multidisciplinaire fut le plus grand défi. C'est en arrivant à allier ces deux facettes du génie que nous avons réussi à conçevoir un produit complet et amusant.
+                  `,
         dates: '2025 — 2025',
         images: ['assets/Manette.jpg','assets/Manette.gif'],
         link: 'project.html?id=3'
@@ -61,13 +96,30 @@ window.projectsData = [
     {
         id: 'p5',
         title_en: 'Smart Pill Dispenser',
-        title_fr: 'Pillulier intelligent',
+        title_fr: 'Pilulier intelligent',
         origin_en: 'School project',
         origin_fr: 'Project scolaire',
-        desc_en: 'Short description of project five.',
-        desc_fr: 'Courte description du projet cinq.',
-        full_desc_en: 'Short description of project five.',
-        full_desc_fr: 'Courte description du projet cinq.',
+        desc_en: 'Smart pillbox designed to assist healthcare staff by enabling the simultaneous monitoring of medication intake for multiple patients.',
+        desc_fr: 'Pilulier intelligent conçu pour assister le personnel soignant en permettant le suivi simultané de la prise de médicaments chez plusieurs patients.',
+        full_desc_en: `As part of a school project, we were tasked with prototyping a robot designed to help humanity. This project was presented at the Expo mégaGÉNIALE 2024 at the University of Sherbrooke.
+In this project, I was particularly involved in the development of the software. More specifically, I:
+
+                 • Implemented the class representing the patients
+                 • Developed the robot's movement algorithm
+                 • Developed the algorithm for managing medication intake
+                 • Integrated various sensors, such as a sonar, an RFID scanner, servomotors, and more
+                            
+This project gave me the opportunity to refine my knowledge in embedded programming, particularly in C++ and PlatformIO.`,
+
+        full_desc_fr: `Dans le cadre d'un projet scolaire, nous avions la mission de faire le prototype d'un robot devant aider l'humanité. Ce projet fut présenté à l'Expo mégaGÉNIALE en 2024, à l'Université de Sherbrooke.
+Dans ce projet, je me suis particulièrement impliqué dans le développement du code informatique. Plus précisemment, jai :
+
+                  • Implanter la classe servant à représenter les patients
+                  • Développer l'algorithme de déplacement du robot
+                  • Développer l'algorithme de gestion de la prise de médicamments
+                  • Implémanter divers capteurs, tel qu'un sonar, un scanneur RFID, des servomoteurs, etc.
+
+Ce projet a été pour moi l'occasion de rafiner mes connaissances en programmation embarqué, plus précisemment en C++ et plateformeIO.`,
         dates: '2024 — 2024',
         images: ['assets/PharmaBob.jpg','assets/PharmaBob.gif'],
         link: 'project.html?id=4'
