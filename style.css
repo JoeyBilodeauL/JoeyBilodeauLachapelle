@@ -14,13 +14,23 @@
     --intro-h: 240px;
 }
 
+/* Global box-sizing for responsive layout */
+html {
+    scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* ensure body has space for fixed navbar */
 body{
     font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background: #fff;
     color: var(--bg, #0f1724);
     line-height: 1.4;
-    padding-top: var(--navbar-h); /* removed extra gap so intro sits directly under navbar */
+    padding-top: var(--navbar-h);
+    overflow-x: hidden;
 }
 
 /* top navbar: smaller and white (remove bottom line) */
@@ -122,23 +132,19 @@ body{
 .intro-name{
     font-weight: 800;
     color: var(--bg, #0f1724);
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
     line-height: 1;
     margin-top: 6px;
 }
 
 /* new subtitle style: smaller, muted, and centered */
 .intro-subtitle{
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
     color: rgba(15,23,36,0.72);
     font-weight: 500;
     margin-top: 2px;
-    line-height: 1.2;
-}
-
-/* responsive: keep subtitle readable on small screens */
-@media (max-width: 520px) {
-    .intro-subtitle{ font-size: 0.9rem; }
+    line-height: 1.3;
+    max-width: 90vw;
 }
 
 /* ensure following page content isn't hidden behind avatar */
@@ -165,7 +171,19 @@ main{
 }
 
 /* Projects grid / cards */
-.projects-section { background: #fff; }
+.projects-section { 
+    background: #fff;
+}
+
+#projects-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    width: 100%;
+}
 
 .project-card {
     background: #ffffff;
@@ -315,8 +333,9 @@ main{
 /* horizontal layout for single-column projects */
 .project-card-horizontal {
     flex-direction: row;
-    height: auto;
-    min-height: 220px;
+    height: 200px;
+    min-height: 200px;
+    width: 100%;
 }
 
 .project-card-horizontal .project-card-content {
@@ -328,15 +347,18 @@ main{
 }
 
 .project-card-horizontal .card-img-container {
-    width: 35%;
-    height: 220px;
+    width: 30%;
+    min-width: 150px;
+    height: 100%;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 .project-card-horizontal .card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .project-card-horizontal .card-body {
@@ -344,32 +366,72 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1.2rem 1.5rem;
+    padding: clamp(0.8rem, 3vw, 1.2rem) clamp(1rem, 4vw, 1.5rem);
+    min-width: auto;
+    overflow: visible;
+}
+
+.project-card-horizontal .card-title {
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    word-break: break-word;
+}
+
+.project-card-horizontal .card-origin {
+    font-size: clamp(0.75rem, 1.5vw, 0.85rem);
 }
 
 .project-card-horizontal .card-desc {
-    margin-bottom: 8px;
+    font-size: clamp(0.85rem, 1.8vw, 0.92rem);
+    margin-bottom: 6px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
 }
 
 .project-card-horizontal .more-btn {
     align-self: flex-end;
     margin: 0;
+    padding: clamp(4px, 1vw, 6px) clamp(8px, 2vw, 10px);
+    font-size: clamp(0.75rem, 1.5vw, 0.88rem);
+    white-space: nowrap;
 }
 
+/* Tablet: Still horizontal but adjust proportions */
+@media (max-width: 900px) {
+    .project-card-horizontal .card-img-container {
+        width: 35%;
+    }
+}
+
+/* Tablet to Mobile transition: Stack vertically earlier */
 @media (max-width: 768px) {
     .project-card .card-img-container { height: 140px; }
     
     .project-card-horizontal {
         flex-direction: column;
+        height: auto;
+        min-height: auto;
+    }
+    
+    .project-card-horizontal .project-card-content {
+        flex-direction: column;
+        width: 100%;
     }
     
     .project-card-horizontal .card-img-container {
         width: 100%;
-        height: 180px;
+        height: 150px;
+        min-width: unset;
     }
     
     .project-card-horizontal .card-body {
         padding: 0.9rem;
+    }
+    
+    .project-card-horizontal .card-desc {
+        -webkit-line-clamp: 3;
     }
     
     .project-card-horizontal .more-btn {
@@ -379,9 +441,65 @@ main{
     }
 }
 
-@media (max-width: 420px) {
-    .project-card .card-img-container { height: 120px; }
-    .date-badge { font-size: 0.75rem; padding: 5px 7px; right: 8px; top: 8px; }
+/* Small screens: Stack vertically and ensure all content visible */
+@media (max-width: 600px) {
+    .project-card-horizontal {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+    }
+    
+    .project-card-horizontal .project-card-content {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .project-card-horizontal .card-img-container {
+        width: 100%;
+        height: 130px;
+    }
+    
+    .project-card-horizontal .card-body {
+        padding: 0.8rem;
+    }
+    
+    .project-card-horizontal .card-desc {
+        -webkit-line-clamp: unset;
+        overflow: visible;
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card .card-img-container { height: 100px; }
+    
+    .project-card-horizontal {
+        height: auto;
+        min-height: auto;
+    }
+    
+    .project-card-horizontal .project-card-content {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .project-card-horizontal .card-img-container {
+        width: 100%;
+        height: 120px;
+        min-width: unset;
+    }
+    
+    .project-card-horizontal .card-body {
+        padding: 0.7rem;
+        overflow: visible;
+    }
+    
+    .date-badge { 
+        font-size: 0.7rem; 
+        padding: 4px 6px; 
+        right: 6px; 
+        top: 6px; 
+    }
 }
 
 /* bottom bar hidden by default, slide up when shown */
