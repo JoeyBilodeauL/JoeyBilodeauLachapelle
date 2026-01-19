@@ -177,24 +177,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const images = p.images || [p.img]; // fallback for projects with single img
             const hasMultiple = images.length > 1;
             
-            // use Bootstrap columns: 3 columns on md and up
+            // use full width with horizontal layout
             return `
-                <div class="col-12 col-md-4">
-                    <article class="project-card">
+                <div class="col-12">
+                    <article class="project-card project-card-horizontal">
                         <div class="date-badge">${p.dates}</div>
-                        <div class="card-img-container">
-                            <img class="card-img" src="${images[0]}" alt="${title}" data-project-id="${p.id}">
-                            ${hasMultiple ? `
-                                <button class="carousel-arrow carousel-prev" aria-label="Previous image" data-project-id="${p.id}">‹</button>
-                                <button class="carousel-arrow carousel-next" aria-label="Next image" data-project-id="${p.id}">›</button>
-                                <div class="carousel-counter"><span class="counter-current" data-project-id="${p.id}">1</span> / ${images.length}</div>
-                            ` : ''}
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title">${title}</div>
-                            <div class="card-origin">${origin}</div>
-                            <div class="card-desc">${desc}</div>
-                            <a class="btn btn-sm btn-outline-primary more-btn" href="project.html?id=${index}" aria-label="More about ${title}">${t.moreBtn}</a>
+                        <div class="project-card-content">
+                            <div class="card-img-container">
+                                <img class="card-img" src="${images[0]}" alt="${title}" data-project-id="${p.id}">
+                                ${hasMultiple ? `
+                                    <button class="carousel-arrow carousel-prev" aria-label="Previous image" data-project-id="${p.id}">‹</button>
+                                    <button class="carousel-arrow carousel-next" aria-label="Next image" data-project-id="${p.id}">›</button>
+                                    <div class="carousel-counter"><span class="counter-current" data-project-id="${p.id}">1</span> / ${images.length}</div>
+                                ` : ''}
+                            </div>
+                            <div class="card-body">
+                                <div class="card-title">${title}</div>
+                                <div class="card-origin">${origin}</div>
+                                <div class="card-desc">${desc}</div>
+                                <a class="btn btn-sm btn-outline-primary more-btn" href="project.html?id=${index}" aria-label="More about ${title}">${t.moreBtn}</a>
+                            </div>
                         </div>
                     </article>
                 </div>
