@@ -4,34 +4,36 @@
 window.projectsData = [
     {
         id: 'p1',
-        title_en: 'Glowstick detector',
-        title_fr: 'Détecteur de glowstick',
-        origin_en: 'Rover - Robotic UDES',
-        origin_fr: 'Rover - Robotique UDES',
-        desc_en: 'Short description of project one.',
-        desc_fr: 'Courte description du projet un.',
-        full_desc_en: 'Short description of project one.',
-        full_desc_fr: 'Courte description du projet un.',
-        dates: '2025 — 2025',
-        images: ['assets/Picture.JPG'],
-        link: 'project.html?id=0'
-    },
-    {
-        id: 'p2',
         title_en: 'Rover simulation',
         title_fr: 'Simulation du Rover',
         origin_en: 'Rover - Robotic UDES',
         origin_fr: 'Rover - Robotique UDES',
-        desc_en: 'Short description of project two.',
-        desc_fr: 'Courte description du projet deux.',
-        full_desc_en: 'Short description of project two.',
-        full_desc_fr: 'Courte description du projet deux.',
+        desc_en: "3D simulation environnement for testing sensor implementation and algorithm on a rover.",
+        desc_fr: "Environnement de simulation 3D pour tester l'implémentaiton de capteurs et d'algorithme sur un rover",
+        full_desc_en: `This project originated from our technical team's desire to integrate automation functionalities into a rover.
+I was therefore assigned the task of developing a simulation environment to test these functionalities. As part of this project, I:
+
+                   • Modeled the rover using the URDF format
+                   • Developed a simulation environment within the Ignition software
+                   • Developed a Python script to interface Ignition with ROS
+                   
+This project allowed me to become familiar with automation and autonomous robotics concepts and to validate them in simulation, particularly through the implementation of an autonomous navigation method based on SLAM.`,
+
+        full_desc_fr: `Ce projet vient d'une volonté de notre groupe technique d'implanter sur notre rover des fonctionnalités d'automatisation.
+J'ai donc été confié la tâche de développer un environnement qui nous permettrait d'effecter des tests. Pour ce projet, j'ai dû :
+
+                   • Modéliser le modèle du rover en URDF
+                   • Développer un environnement de simulation au sein du logiciel Ignition
+                   • Développer un fichier Python permettant de faire le pont entre Ignition et ROS
+                   
+Ce projet m'a permis de me familiariser avec des concepts d'automatisation et de les tester en simulation, notamment la méthode de navigation automatique SLAM.                   
+                   `,
         dates: '2025 — 2025',
         images: ['assets/SimuSLAM.gif'],
         link: 'project.html?id=1'
     },
     {
-        id: 'p3',
+        id: 'p2',
         title_en: 'H-Bridge for battery charging',
         title_fr: 'Pont en H pour rechargement de batterie',
         origin_en: 'School project',
@@ -64,7 +66,7 @@ Recharger la batterie n'avait pas été une tâche simple à faire. Toutefois, e
         link: 'project.html?id=2'
     },
     {
-        id: 'p4',
+        id: 'p3',
         title_en: 'Video Game controller',
         title_fr: 'Manette de jeux vidéo',
         origin_en: 'School project',
@@ -94,7 +96,7 @@ Lors de ce projet, le travail multidisciplinaire fut le plus grand défi. C'est 
         link: 'project.html?id=3'
     },
     {
-        id: 'p5',
+        id: 'p4',
         title_en: 'Smart Pill Dispenser',
         title_fr: 'Pilulier intelligent',
         origin_en: 'School project',
@@ -144,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             langBtn: 'FR',
             linkedinText: 'LinkedIn',
             pageP: 'My portfolio',
-            subtitle: 'Electrical engineering student - Computer and robotic - Gamer.',
+            subtitle: "Hi, I am an electrical engineer student pursuing my bachelor at the Université of Sherbrooke.\n Welcome to my portfolio.",
             htmlLang: 'en',
             moreBtn: 'More'
         },
@@ -155,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             langBtn: 'EN',
             linkedinText: 'LinkedIn',
             pageP: 'Mon protfolio',
-            subtitle: 'Étudiant en génie électrique - Ordinateur et robotique - Gym bro',
+            subtitle: "Bonjour, je suis un étdudiant en génie électrique et je poursuis mon baccalauréat à l'Université de Sherbrooke.\n Bienvenue sur mon portfolio.",
             htmlLang: 'fr',
             moreBtn: 'Plus'
         }
@@ -168,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!projectsGrid) return;
         const isFr = lang === 'fr';
         const t = texts[lang] || texts.en;
-        projectsGrid.innerHTML = projects.map(p => {
+        projectsGrid.innerHTML = projects.map((p, index) => {
             const title = isFr ? p.title_fr : p.title_en;
             const origin = isFr ? p.origin_fr : p.origin_en;
             const desc = isFr ? p.desc_fr : p.desc_en;
@@ -192,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="card-title">${title}</div>
                             <div class="card-origin">${origin}</div>
                             <div class="card-desc">${desc}</div>
-                            <a class="btn btn-sm btn-outline-primary more-btn" href="${p.link}" aria-label="More about ${title}">${t.moreBtn}</a>
+                            <a class="btn btn-sm btn-outline-primary more-btn" href="project.html?id=${index}" aria-label="More about ${title}">${t.moreBtn}</a>
                         </div>
                     </article>
                 </div>
